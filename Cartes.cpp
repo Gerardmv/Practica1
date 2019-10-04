@@ -1,27 +1,28 @@
-#ifndef CARTA_H
-#define CARTA_H
+#include "Carta.h"
 #include <string>
 using namespace std;
 
-
-class Carta
+Carta::Carta(int numcarta, int numpal)
 {
-    public:
-        Carta();
-        virtual ~Carta();
-        string static donaNom(int numero);
-        string static donaPal(int pal);
-    protected:
+    Carta::NUMCARTA = numcarta;
+    Carta::NOMCARTA = Carta::donaNom(numcarta);
+    Carta::PAL =
+}
 
-    private:
-        const static int COPES = 1;
-        const static int ESPASES = 2;
-        const static int BASTONS = 3;
-        const static int OROS = 4;
+Carta::~Carta()
+{
 
-        const int NUMCARTA;
-        const int PAL;
-        const string NOMCARTA;
-};
+}
 
-#endif // CARTA_H
+string Carta::donaNom(int numero)
+    {
+        string resultat[12] = {"AS", "DOS", "TRES", "QUATRE", "CINC", "SIS", "SET", "", "", "SOTA", "CAVALL", "REI"};
+        return resultat[numero - 1];
+    }
+
+string Carta::donaPal(int numero)
+    {
+
+        string resultat[4] = {"COPES","ESPASES","BASTONS","OROS"};
+        return resultat[numero-1];
+    }

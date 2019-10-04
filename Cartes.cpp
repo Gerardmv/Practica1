@@ -1,17 +1,24 @@
 #include "Carta.h"
-#include <string>
+#include <iostream>
+
 using namespace std;
 
-Carta::Carta(int numcarta, int numpal)
+Carta::Carta(int num, int numpal)
+: NUMCARTA(num), PAL(Carta::donaPal(num)), NOMCARTA(Carta::donaNom(numpal))
 {
-    Carta::NUMCARTA = numcarta;
-    Carta::NOMCARTA = Carta::donaNom(numcarta);
-    Carta::PAL =
+
 }
 
-Carta::~Carta()
-{
+int Carta::getNum() {
+    return Carta::NUMCARTA;
+}
 
+string Carta::getNom() {
+    return Carta::NOMCARTA;
+}
+
+string Carta::getPal()  {
+    return Carta::PAL;
 }
 
 string Carta::donaNom(int numero)
@@ -22,7 +29,16 @@ string Carta::donaNom(int numero)
 
 string Carta::donaPal(int numero)
     {
-
-        string resultat[4] = {"COPES","ESPASES","BASTONS","OROS"};
-        return resultat[numero-1];
+        switch (numero) {
+            case Carta::BASTONS:
+                return "BASTONS";
+            case Carta::COPES:
+                return "COPES";
+            case Carta::ESPASES:
+                return "ESPASES";
+            case Carta::OROS:
+                return "OROS";
+            default:
+                return "ERROR";
+        }
     }

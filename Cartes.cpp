@@ -22,23 +22,32 @@ string Carta::getPal()  {
 }
 
 string Carta::donaNom(int numero)
-    {
-        string resultat[12] = {"AS", "DOS", "TRES", "QUATRE", "CINC", "SIS", "SET", "", "", "SOTA", "CAVALL", "REI"};
-        return resultat[numero - 1];
-    }
+{
+    string resultat[12] = {"AS", "DOS", "TRES", "QUATRE", "CINC", "SIS", "SET", "", "", "SOTA", "CAVALL", "REI"};
+    return resultat[numero - 1];
+}
 
 string Carta::donaPal(int numero)
-    {
-        switch (numero) {
-            case Carta::BASTONS:
-                return "BASTONS";
-            case Carta::COPES:
-                return "COPES";
-            case Carta::ESPASES:
-                return "ESPASES";
-            case Carta::OROS:
-                return "OROS";
-            default:
-                return "ERROR";
-        }
+{
+    switch (numero) {
+        case Carta::BASTONS:
+            return "BASTONS";
+        case Carta::COPES:
+            return "COPES";
+        case Carta::ESPASES:
+            return "ESPASES";
+        case Carta::OROS:
+            return "OROS";
+        default:
+            return "ERROR";
     }
+}
+
+void Carta::visualitza(bool nom)
+{
+    if (nom) {
+        cout << Carta::getNom()<<" de "<<Carta::donaPal() << endl;
+    } else {
+        cout <<Carta::getNum()<<" de "<<Carta::donaPal() << endl;
+    }
+}

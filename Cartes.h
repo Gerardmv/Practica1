@@ -17,12 +17,16 @@ class Carta
         const static int BASTONS = 3;
         const static int OROS = 4;
         void visualitza (bool);
+        bool operator==(Carta *);
+        bool operator!=(Carta *);
+
     protected:
 
     private:
 
         string static donaNom(int numero);
         string static donaPal(int pal);
+        int palAInt (string pal);
 
         const int NUMCARTA;
         const string PAL;
@@ -30,3 +34,4 @@ class Carta
 };
 
 #endif // CARTA_H
+

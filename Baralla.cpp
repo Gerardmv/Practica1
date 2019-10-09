@@ -9,26 +9,27 @@ using namespace std;
 Baralla::Baralla()
 {
 
-    int pal=1,numcarta,numtotal=1;
+    int pal=1,numcarta;
+    Baralla::NUMdeCARTES=1;
     while(pal<=4){
     numcarta=1;
     while(numcarta<=12){
     switch(pal) {
     case Carta::COPES:
-    Baralla::BARALLATAULA[numtotal]= new Carta(numcarta,pal);
+    Baralla::BARALLATAULA[Baralla::NUMdeCARTES]= new Carta(numcarta,pal);
              break;
     case Carta::ESPASES :
-    Baralla:: BARALLATAULA[numtotal]= new Carta(numcarta,pal);
+    Baralla:: BARALLATAULA[Baralla::NUMdeCARTES]= new Carta(numcarta,pal);
              break;
     case Carta::BASTONS :
-     Baralla::BARALLATAULA[numtotal]= new Carta(numcarta,pal);
+     Baralla::BARALLATAULA[Baralla::NUMdeCARTES]= new Carta(numcarta,pal);
              break;
     case Carta::OROS :
-     Baralla::BARALLATAULA[numtotal]= new Carta(numcarta,pal);
+     Baralla::BARALLATAULA[Baralla::NUMdeCARTES]= new Carta(numcarta,pal);
              break;
 }
 numcarta++;
-numtotal++;
+Baralla::NUMdeCARTES++;
 }
 pal++;
 }
@@ -40,11 +41,7 @@ Baralla::~Baralla()
 }
 int Baralla::getQuantes()
     {
-        int resultat;
-        for(int idx=0; idx>sizeof(Baralla::BARALLATAULA); idx++ ){
-            if(Baralla::BARALLATAULA[idx]!=NULL){resultat++;}
-        }
-        return resultat;
+        return Baralla::NUMdeCARTES;
     }
 bool Baralla :: barallaBudia()
 {

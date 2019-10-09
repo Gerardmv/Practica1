@@ -2,25 +2,28 @@
 #include <stdlib.h>
 #include <time.h>
 #include<iostream>
+#include <Carta.h>
+
 using namespace std;
 
 Baralla::Baralla()
 {
-    int pal=1,numcart,numtotal=;
+
+    int pal=1,numcarta,numtotal=1;
     while(pal<=4){
-    numcart=1;
+    numcarta=1;
     while(numcarta<=12){
     switch(pal) {
-    case COPES :
+    case Carta::COPES:
     Baralla::BARALLATAULA[numtotal]= new Carta(numcarta,pal);
              break;
-    case ESPASES :
+    case Carta::ESPASES :
     Baralla:: BARALLATAULA[numtotal]= new Carta(numcarta,pal);
              break;
-    case BASTONS :
+    case Carta::BASTONS :
      Baralla::BARALLATAULA[numtotal]= new Carta(numcarta,pal);
              break;
-    case OROS :
+    case Carta::OROS :
      Baralla::BARALLATAULA[numtotal]= new Carta(numcarta,pal);
              break;
 }
@@ -38,8 +41,8 @@ Baralla::~Baralla()
 int Baralla::getQuantes()
     {
         int resultat;
-        for(int idx==0; idx>sizeof(Baralla::BARALLATAULA); idx++ ){
-            if(Baralla::BARALLATAULA[idx]!=null){resultat++;}
+        for(int idx=0; idx>sizeof(Baralla::BARALLATAULA); idx++ ){
+            if(Baralla::BARALLATAULA[idx]!=NULL){resultat++;}
         }
         return resultat;
     }
@@ -47,35 +50,35 @@ bool Baralla :: barallaBudia()
 {
 //Si queden cartes true
 bool resultat = true ;
-if(getQuantes()==0) resultata=false;
+if(getQuantes()==0) resultat=false;
 return resultat;
 }
 
 Carta*Baralla::extreureCarta()
 {
  int num;
- Carta resultat;
+ Carta*resultat;
 
     srand(time(NULL));
     num=rand()%40;
 
-while(BARALLATAULA[num]==null){
+while(BARALLATAULA[num]==NULL){
 num=rand()%40;
 }
 resultat = BARALLATAULA[num];
-Baralla::BARALLATAULA[num]=null;
+Baralla::BARALLATAULA[num]=NULL;
 Baralla::NUMdeCARTES=Baralla::NUMdeCARTES-1;
 return  resultat;
-    }
 }
+
 
 void Baralla::visualitzar()
 {
-Carta aux;
-for(int idx==0; idx>sizeof(Baralla::BARALLATAULA); idx++ ){
+Carta*aux = new Carta(1,1);
+for(int idx=0; idx>sizeof(Baralla::BARALLATAULA); idx++ ){
             aux = Baralla::BARALLATAULA[idx];
-            if(aux!=null){cout<<aux.getNom + "de" + aux.getPal<"";}
-        }
+            if(aux!=NULL){cout<<aux.getNom()<< "de" << aux.getPal()<<"";}//no funciona get()
+}
 }
 void Baralla::destruir()
 {

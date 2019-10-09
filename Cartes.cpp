@@ -46,8 +46,28 @@ string Carta::donaPal(int numero)
 void Carta::visualitza(bool nom)
 {
     if (nom) {
-        cout << Carta::getNom()<<" de "<<Carta::donaPal() << endl;
+        cout << Carta::getNom()<<" de "<<Carta::donaPal(Carta::palAInt(PAL)) << endl;
     } else {
-        cout <<Carta::getNum()<<" de "<<Carta::donaPal() << endl;
+        cout <<Carta::getNum()<<" de "<<Carta::donaPal(Carta::palAInt(PAL)) << endl;
     }
+}
+
+int Carta::palAInt(string pal)
+{
+     if (pal == "BASTONS"){
+         return Carta::BASTONS;
+     } else if (pal == "ESPASES") {
+         return Carta::ESPASES;
+     } else if (pal == "COPES") {
+         return Carta::COPES;
+     } else if (pal == "OROS") {
+         return Carta::OROS;
+     } else {
+         return -1;
+     }
+}
+
+bool Carta::operator==(Carta *c1)
+{
+    return this->palAInt(PAL) == c1->palAInt(getPal()) || this->NUMCARTA == c1->getNum();
 }

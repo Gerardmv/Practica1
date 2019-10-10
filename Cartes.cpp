@@ -4,7 +4,7 @@
 using namespace std;
 
 Carta::Carta(int num, int numpal)
-: NUMCARTA(num), PAL(Carta::donaPal(num)), NOMCARTA(Carta::donaNom(numpal))
+: NUMCARTA(num), PAL(Carta::donaPal(numpal)), NOMCARTA(Carta::donaNom(num))
 {
 
 }
@@ -24,7 +24,7 @@ string Carta::getPal()  {
 string Carta::donaNom(int numero)
 {
     string resultat[12] = {"AS", "DOS", "TRES", "QUATRE", "CINC", "SIS", "SET", "", "", "SOTA", "CAVALL", "REI"};
-    return resultat[numero - 1];
+    return resultat[numero-1];
 }
 
 string Carta::donaPal(int numero)
@@ -66,8 +66,13 @@ int Carta::palAInt(string pal)
          return -1;
      }
 }
+bool Carta::operator!=(Carta *c1)
+{
+    return !Carta::operator==(c1);
+}
 
 bool Carta::operator==(Carta *c1)
 {
-    return this->palAInt(PAL) == c1->palAInt(getPal()) || this->NUMCARTA == c1->getNum();
+    return this->palAInt(PAL) == c1->palAInt(c1->getPal()) || this->NUMCARTA == c1->getNum();
 }
+

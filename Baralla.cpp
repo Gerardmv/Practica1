@@ -74,14 +74,14 @@ void Baralla::visualitzar()
 Carta*aux = new Carta(1,1);
 for(int idx=0; idx>sizeof(Baralla::BARALLATAULA); idx++ ){
             aux = Baralla::BARALLATAULA[idx];
-            if(aux!=NULL){cout<<aux.getNom()<< "de" << aux.getPal()<<"";}//no funciona get()
+            if(aux!=NULL){cout<<aux->getNom()<< "de" << aux->getPal()<<"";}//no funciona get()
 }
 }
 void Baralla::destruir()
 {
-Carta aux;
-for(int idx==0; idx>sizeof(Baralla::BARALLATAULA); idx++ ){
+Carta*aux;
+for(int idx=0; idx>sizeof(Baralla::BARALLATAULA); idx++ ){
             aux = Baralla::BARALLATAULA[idx];
-            if(aux==null){aux.delete;}
+            if(aux==NULL){delete aux;}
         }
 }

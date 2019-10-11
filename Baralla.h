@@ -21,4 +21,3 @@ class Baralla
 };
 
 #endif // BARALLA_H
-

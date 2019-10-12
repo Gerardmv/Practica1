@@ -2,13 +2,13 @@
 #define TAULER_H
 #include <Carta.h>
 #include <Baralla.h>
+#include <iostream>
 
 
 class Tauler
 {
     public:
         Tauler();
-        virtual ~Tauler();
         void visualitza(bool);
         void extreureCarta();
         void aparellar(int pos);
@@ -17,13 +17,18 @@ class Tauler
         Carta* getCarta(int posicio);
         int getQuantesTaulell();
         int getQuantesMunt();
+        void destruir();
+
+
 
     protected:
 
     private:
-    Carta*taulell[20];
-    int numCartesTaula;
-    Baralla*munt;
+
+        Carta* taulell[20];
+        int numCartesTaula;
+        Baralla* munt;
+
 
 };
 

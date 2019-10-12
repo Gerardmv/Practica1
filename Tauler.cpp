@@ -1,78 +1,78 @@
 #include "Tauler.h"
 #include <Carta.h>
 #include <Baralla.h>
+#include <iostream>
+
+using namespace std;
 
 Tauler::Tauler()
 {
- munt= new Baralla();
- numCartesTaula=0;
-}
-
-Tauler::~Tauler()
-{
+    munt = new Baralla();
+    numCartesTaula = 0;
 }
 
 void Tauler::extreureCarta()
 {
-taulell[numCartesTaula]=munt->extreureCarta();
-Tauler::numCartesTaula++;
+    Tauler::taulell[numCartesTaula]=munt->extreureCarta();
+    Tauler::numCartesTaula++;
 }
 
-int getQuantesTaulell()
+int Tauler::getQuantesTaulell()
 {
-return numCartesTaula;
+    return numCartesTaula;
 }
 
-int getQuantesMunt()
+int Tauler::getQuantesMunt()
 {
-return munt->getQuants();
+    return munt->getQuantes();
 }
-void visualitza(bool mirarT)
+void Tauler::visualitza(bool mirarT)
 {
-int siete=1;
-if(mirarT){
-    for(int idx=0; idx<sizeof(taulell);idx++){
-    taulell[idx]->visualitzar();
-    if(siete==7){
-        cout<<"\n";
-        siete=0;
+    int siete=1;
+    if(mirarT){
+        for(int idx=0; idx<numCartesTaula;idx++){
+            Tauler::taulell[idx]->visualitza(true);
+            if(siete==7){
+                cout<<"\n";
+                siete=0;
+            }
+            siete++;
         }
-    siete++;
+    }
+    else{
+        Tauler::munt->visualitzar();
     }
 }
-else{
-    munt->visulitzar();
-}
-}
 
-Carta* getCarta(int posicio)
+Carta* Tauler::getCarta(int posicio)
 {
-return tauler[posicio];
+    return Tauler::taulell[posicio];
 }
 
-bool hiHaParelles()
+bool Tauler::hiHaParelles()
 {
-Carta*c1;
-Carta*c2;
-for(int idx=0;idx<sizeof(taulell);idx++){
-c1=taulell[idx];
-if(taulell[idx+2]!=NULL){
-c2=taulell[idx+2];
-if(c1==c2) return true;
-}
-}
-return false;
+    Carta*c1;
+    Carta*c2;
+    for(int idx=0;idx<20;idx++){
+        c1=taulell[idx];
+        if(taulell[idx+2]!=NULL){
+            c2=taulell[idx+2];
+            if(c1==c2)
+                return true;
+        }
+    }
+    return false;
 }
 
-bool fiJocExit()
+bool Tauler::fiJocExit()
 {
 if(!hiHaParelles()){
-    if(getQuantesTaulell()==20){
+    if(numCartesTaula==20){
             //perds
             return true;
         }
     else{
-        if(getQuantesTaulell()==2 && getQuantesMunt()==0){
+        if(numCartesTaula==2 && getQuantesMunt()==0){
             //GG
             return true;
         }
@@ -84,13 +84,12 @@ if(!hiHaParelles()){
 }
 return false;
 }
-void aparellar(int pos)
+void Tauler::aparellar(int pos)
 {
-if(getCarta(pos+2)!=NULL&&getCarta(pos!=NULL)){
-if(getCarta(pos)==getCarta(pos+2)){
-    //FEr elimincaió de la carta al taulell
-}
-}
-}
-
+    Carta* aux;
+    for (int i = pos-1; i<numCartesTaula-1; i++) {
+        aux = taulell[i+1];
+        taulell[i] = aux;
+    }
+    taulell[20] = NULL;
 }

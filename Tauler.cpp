@@ -31,6 +31,7 @@ void Tauler::visualitza(bool mirarT)
     int siete=1;
     if(mirarT){
         for(int idx=0; idx<numCartesTaula;idx++){
+            cout<<siete<<".- ";
             Tauler::taulell[idx]->visualitza(true);
             if(siete==7){
                 cout<<"\n";
@@ -68,28 +69,25 @@ bool Tauler::fiJocExit()
 {
 if(!hiHaParelles()){
     if(numCartesTaula==20){
-            //perds
-            return true;
-        }
+        return true;
+    }
+    else if(numCartesTaula==2 && getQuantesMunt()==0){
+        return true;
+    }
     else{
-        if(numCartesTaula==2 && getQuantesMunt()==0){
-            //GG
-            return true;
-        }
-        else{
-            //Perds
-            return true;
-        }
-        }
+        return true;
+    }
 }
 return false;
 }
+
 void Tauler::aparellar(int pos)
 {
     Carta* aux;
-    for (int i = pos-1; i<numCartesTaula-1; i++) {
-        aux = taulell[i+1];
-        taulell[i] = aux;
+    while (pos<numCartesTaula-1) {
+        taulell[pos] = taulell[pos+1];
+        pos++;
     }
-    taulell[20] = NULL;
+    numCartesTaula --;
 }
+

@@ -46,6 +46,10 @@ int Baralla::getQuantes()
 bool Baralla :: barallaBudia()
 {
 //Si queden cartes true
+   /*
+if(getQuantes()==0) return false;
+return true; 
+   */
 bool resultat = true ;
 if(getQuantes()==0) resultat=false;
 return resultat;
@@ -64,6 +68,8 @@ num=rand()%40;
 }
 resultat = BARALLATAULA[num];
 Baralla::BARALLATAULA[num]=NULL;
+   //CRec que s'hauria de destruir algo com:
+   //Baralla::BARALLATAULA[num]->destruir();
 Baralla::NUMdeCARTES=Baralla::NUMdeCARTES-1;
 return  resultat;
 }
@@ -71,10 +77,10 @@ return  resultat;
 
 void Baralla::visualitzar()
 {
-Carta*aux = new Carta(1,1);
+Carta*aux;//=new Carta (X,X);
 for(int idx=0; idx>sizeof(Baralla::BARALLATAULA); idx++ ){
             aux = Baralla::BARALLATAULA[idx];
-            if(aux!=NULL){cout<<aux.visualitza();}//no funciona get()
+            if(aux!=NULL){cout<<aux.visualitza();}
 }
 }
 void Baralla::destruir()

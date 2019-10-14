@@ -84,10 +84,12 @@ return false;
 void Tauler::aparellar(int pos)
 {
     Carta* aux;
+    aux= taulell[pos];
     while (pos<numCartesTaula-1) {
         taulell[pos] = taulell[pos+1];
         pos++;
     }
+    delete aux;
     numCartesTaula --;
 }
 
